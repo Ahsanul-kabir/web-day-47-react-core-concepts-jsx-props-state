@@ -2,17 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  {/* 4. JSX, Dynamic content, Dynamic Style in React */}
-  const name = "Dr. Mahfuz";
-  const person = {
-    name : "Hasan",
-    age : 20
-  }
-  var style = {
-    color:'red',
-    backgroundColor:'yellow'
-  }
-  {/* --- */}
+  {/* 7. Pass dynamic data to components, props in react */}
+  const nayoks = ['Azmol', 'Manna'];
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,33 +12,26 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        {/* 4. JSX, Dynamic content, Dynamic Style in React */}
-        <h2 className ="" style={style} >My heading {(2+3)*25+65}</h2>
-        <h2 style={{backgroundColor: 'grey' , color:'yellow'}}>Doctor name : {name}</h2>
-        <h2>Person's {person.name + " " + person.age}</h2>
-        <p>My first paragrapraph</p>
-      {/* ----- */}
 
-     {/* 5. Component, 4 ways to identify a component = just previous module er gula repeat bolse code korai ni */}
-      {/* 6 Create Component, return multiple HTML from a component */}
-      <Person></Person>
-      <Person></Person>
-      {/* --- */}
+        {/* 7. Pass dynamic data to components, props in react */}
+        <Person nayok="Rebel" Naika="Mousumi"></Person>
+        <Person nayok={nayoks[1]} Naika="Sabnur"></Person>
+        {/* --- */}
       </header>
     </div>
   );
 }
 
-// 6 Create Component, return multiple HTML from a component
-function Person(){
+// 7. Pass dynamic data to components, props in react
+function Person(props) {
   const personStyle = {
     border: '2px solid yellow',
     margin: "10px"
   }
   return (
     <div style={personStyle}>
-      <h1>Name: Sakib Al Hasan</h1>
-      <h3>Hero of the year</h3>
+      <h1>Nayok: {props.nayok}</h1>
+      <h3>Hero of {props.Naika}</h3>
     </div>
   )
 }
