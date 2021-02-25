@@ -33,7 +33,7 @@ function Prodect(props) {
   const ProdectStyle = {
     border: "1px solid gray",
     borderRadius: '5px',
-    backgroundColor: 'lightorange',
+    backgroundColor: 'orange',
     height: '200px',
     width: '200px',
     float: 'left'
