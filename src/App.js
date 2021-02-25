@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   const nayoks = ['Razzak', 'Azmol', 'Manna'];
@@ -9,6 +10,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+
+        <Counter></Counter>
         <ul>
           {
             nayoks.map(nk => <li>{nk}</li>)
@@ -49,7 +52,14 @@ function Prodect(props) {
   )
 }
 
-
+function Counter(){
+  const [count, setCount] = useState(0);
+  return(
+    <div>
+      <h1>Count: {count}</h1>
+    </div>
+  )
+}
 function Person(props) {
   const personStyle = {
     border: '2px solid yellow',
