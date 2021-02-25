@@ -54,9 +54,18 @@ function Prodect(props) {
 
 function Counter(){
   const [count, setCount] = useState(0);
+  const handleIncrease = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+  };
+
   return(
     <div>
       <h1>Count: {count}</h1>
+
+      {/* Apply Event Handler */}
+      <button onClick={handleIncrease}>Increase</button>
+      <button onMouseMove={() => setCount(count - 1)}>Decrease</button>
     </div>
   )
 }
