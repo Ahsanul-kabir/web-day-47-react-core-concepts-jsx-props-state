@@ -2,33 +2,31 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  {/* 7. Pass dynamic data to components, props in react */ }
-  const nayoks = ['Azmol', 'Manna'];
-
-  // 8. Pass object to components and access object
-  const products = [{ name: 'Photoshop', price: '$90.99' }, { name: 'Illustrator', price: '$85.99' }
-  ];
-
+  const nayoks = ['Razzak', 'Azmol', 'Manna'];
+  const products = [{ name: 'Photoshop', price: '$90.99' }, { name: 'Illustrator', price: '$85.99' },
+  { name: 'PDF Reader', price: '$7.99' }];
 
   return (
     <div className="App">
       <header className="App-header">
-      {/* 8. Pass object to components and access object */}
-        {/* <Prodect name={products[0].name} price = {products[0].price}></Prodect> */}
-        <Prodect product={products[0]}></Prodect>
-        <Prodect product={products[1]}></Prodect>
+        <ul>
+          {
+            nayoks.map(nk => <li>{nk}</li>)
+          }
 
+          {
+            products.map(pd => <li>{pd.name}</li>)
+          }
+        </ul>
 
-        {/* 7. Pass dynamic data to components, props in react */}
-        <Person nayok="Rebel" Naika="Mousumi"></Person>
-        <Person nayok={nayoks[1]} Naika="Sabnur"></Person>
-        {/* --- */}
+          {
+            products.map(pd => <Prodect product={pd}></Prodect>)
+          }
       </header>
     </div>
   );
 }
 
-// 8. Pass object to components and access object
 function Prodect(props) {
   const ProdectStyle = {
     border: "1px solid gray",
@@ -39,7 +37,7 @@ function Prodect(props) {
     float: 'left'
   }
   // array desttucturing
-  const {name, price} = props.product;
+  const { name, price } = props.product;
 
   return (
     <div style={ProdectStyle}>
@@ -52,8 +50,6 @@ function Prodect(props) {
 }
 
 
-
-// 7. Pass dynamic data to components, props in react
 function Person(props) {
   const personStyle = {
     border: '2px solid yellow',
@@ -66,5 +62,5 @@ function Person(props) {
     </div>
   )
 }
-// ---
+
 export default App;
