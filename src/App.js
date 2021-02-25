@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const nayoks = ['Razzak', 'Azmol', 'Manna'];
@@ -12,6 +12,7 @@ function App() {
       <header className="App-header">
 
         <Counter></Counter>
+        <Users></Users>
         <ul>
           {
             nayoks.map(nk => <li>{nk}</li>)
@@ -22,13 +23,40 @@ function App() {
           }
         </ul>
 
-          {
-            products.map(pd => <Prodect product={pd}></Prodect>)
-          }
+        {
+          products.map(pd => <Prodect product={pd}></Prodect>)
+        }
       </header>
     </div>
   );
 }
+
+function Users() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, [])
+  return (
+    <div>
+      <h3>Dynamic Users: {users.length}</h3>
+
+      {/* {
+        console.log(users)
+      } */}
+
+      <ul>
+        {
+          // users.map(user => <li>{user.name}</li>)
+
+          users.map(user => <li>{user.email}</li>)
+        }
+      </ul>
+    </div>
+  )
+}
+
 
 function Prodect(props) {
   const ProdectStyle = {
@@ -52,14 +80,14 @@ function Prodect(props) {
   )
 }
 
-function Counter(){
+function Counter() {
   const [count, setCount] = useState(0);
   const handleIncrease = () => {
     const newCount = count + 1;
     setCount(newCount);
   };
 
-  return(
+  return (
     <div>
       <h1>Count: {count}</h1>
 
@@ -69,6 +97,7 @@ function Counter(){
     </div>
   )
 }
+
 function Person(props) {
   const personStyle = {
     border: '2px solid yellow',
